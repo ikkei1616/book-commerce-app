@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { BookType } from "@/types";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 type Props = {
   book: BookType;
