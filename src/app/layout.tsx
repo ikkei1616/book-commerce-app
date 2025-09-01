@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "./components/Header";
+import Header from "@/components/Header";
 
 import { Noto_Sans_JP } from "next/font/google";
 import { NextAuthProvider } from "./lib/next-auth/provider";
