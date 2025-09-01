@@ -22,10 +22,10 @@ const Header = () => {
             ホーム
           </Link>
           <Link
-            href="/login"
+            href={user ? "/profile" : "/login"}
             className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
           >
-            ログイン
+            {user ? "プロフィール" : "ログイン"}
           </Link>
 
           {user ? (
