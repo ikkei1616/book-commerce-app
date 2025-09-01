@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import type {Book} from "@/types";
+import type {BookType} from "@/types";
 
 type Props = {
-  book: Book;
+  book: BookType;
 }
 // eslint-disable-next-line react/display-name
 const Book = ({ book }: Props) => {
@@ -31,7 +31,7 @@ const Book = ({ book }: Props) => {
         <a className="cursor-pointer shadow-2xl duration-300 hover:translate-y-1 hover:shadow-none">
           <Image
             priority
-            src={book.thumbnail}
+            src={book.thumbnail.url}
             alt={book.title}
             width={450}
             height={350}
