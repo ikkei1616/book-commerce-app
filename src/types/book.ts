@@ -1,15 +1,15 @@
-export type Book = {
-  id: number;
+export type BookType = {
+  id: string;
   title: string;
-  thumbnail: string;
-  price: number;
-  author: {
-    id: number;
-    name: string;
-    description: string;
-    profile_icon: string;
-  };
   content: string;
-  created_at: string;
-  updated_at: string;
+  price: number;
+  thumbnail: {
+    url: string;
+    height: number;
+    width: number;
+  };
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
 };
