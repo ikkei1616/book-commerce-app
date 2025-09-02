@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from 'react'
 
 const PurchaseSuccess = () => {
   const [bookUrl,setBookUrl] = useState(null);
@@ -51,4 +52,12 @@ const PurchaseSuccess = () => {
   );
 };
 
-export default PurchaseSuccess;
+function PurchaseSuccessPage() {
+  return (
+    <Suspense>
+      <PurchaseSuccess/>
+    </Suspense>
+  )
+}
+
+export default PurchaseSuccessPage;
