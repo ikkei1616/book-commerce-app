@@ -31,10 +31,7 @@ export async function POST(request: Request) {
     });
     
     return NextResponse.json({ checkout_url:session.url});
-  } catch (err: unknown) {
-    if (err instanceof Error) {
-      return NextResponse.json(err.message);
-    }
-    return NextResponse.json("An unknown error occurred.");
+  } catch (err) {
+    console.error(err);
   }
 }
