@@ -4,7 +4,7 @@ import { prisma } from "@/app/lib/prisma";
 import { NextResponse } from "next/server";
 import { stripe } from "@/app/lib/stripe/client";
 
-export async function POST(request: Request, response: Resposne) {
+export async function POST(request: Request) {
   const { sessionId } = await request.json();
 
   try {
