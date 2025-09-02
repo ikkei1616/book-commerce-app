@@ -1,13 +1,26 @@
 import Book from "@/components/Book";
 import { getAllBooks } from "./lib/microcms/client";
-
+import { auth } from "@/auth";
+import type {Purchase, User} from "@/types";
 
 export default async function Home() {
-
   const { contents } = await getAllBooks();
-  console.log(contents[0].thumbnail);
+  const session = await auth();
+  const user = session?.user as User;
+  let purchaseBookIds: string[];
 
-  
+  if (user) {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/purchases/${user.id}`,
+      {cache: "no-store"},
+    );
+    const purchasesData = await response.json();
+
+    purchaseBookIds = purchasesData.map(
+      (purchasesBook: Purchase) => purchasesBook.bookId
+    );
+  }
+
   return (
     <>
       <main className="flex flex-wrap justify-center items-center md:mt-32 mt-20">
@@ -15,7 +28,11 @@ export default async function Home() {
           Book Commerce
         </h2>
         {contents.map((book) => (
-          <Book key={book.id} book={book} />
+          <Book
+            key={book.id}
+            book={book}
+            isPurchased={purchaseBookIds.includes(book.id)}
+          />
         ))}
       </main>
     </>
