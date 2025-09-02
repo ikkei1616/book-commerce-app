@@ -1,11 +1,12 @@
 import Book from "@/components/Book";
 import { getAllBooks } from "./lib/microcms/client";
 import { auth } from "@/auth";
+import type {Purchase, User} from "@/types";
 
 export default async function Home() {
   const { contents } = await getAllBooks();
   const session = await auth();
-  const user = session?.user;
+  const user = session?.user as User;
   let purchaseBookIds: string[];
 
   if (user) {
@@ -16,7 +17,7 @@ export default async function Home() {
     const purchasesData = await response.json();
 
     purchaseBookIds = purchasesData.map(
-      (purchasesBook: { bookId: unknown }) => purchasesBook.bookId
+      (purchasesBook: Purchase) => purchasesBook.bookId
     );
   }
 

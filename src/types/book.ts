@@ -1,3 +1,5 @@
+import type {User} from "./user";
+
 export type BookType = {
   id: string;
   title: string;
@@ -13,3 +15,12 @@ export type BookType = {
   publishedAt: string;
   revisedAt: string;
 };
+
+
+export type Purchase = {
+  id: string,
+  userId: string,
+  bookId: string,
+  createdAt: string,
+  user: User;
+}
