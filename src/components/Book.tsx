@@ -25,7 +25,9 @@ const Book = ({ book }: Props) => {
           headers: { "Content-Type": "application/json" },
           body:JSON.stringify({
             title: book.title,
-            price: book.price
+            price: book.price,
+            userId: user?.id,
+            bookId: book.id,
           }),
         }
       );
